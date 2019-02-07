@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mô phỏng lại quá trình mèo bắt chuột</title>
+</head>
+<body>
+<script>
+    function Mouse(name,weight,run){
+        this.name = name;
+        this.weight = weight;
+        this.run= run;
+
+        this.getName = function(){
+            this.name = name;
+        }
+        this.getWeight = function(){
+            this.weight = weight;
+        }
+        //Tốc độ của chuột
+        this.getRun = function(){
+            this.run = run;
+        }
+        //Nói chuyện
+        this.say = function(){
+            document.write('kêu chít chít <br/>');
+        }
+    }
+    function Cat(name,weight,run){
+        this.name = name;
+        this.weight =weight;
+        this.run = run;
+
+        this.getName = function(){
+            this.name = name;
+        }
+        this.getWeight =function(){
+            this.weight = weight;
+        }
+        this.getRun = function(){
+            this.run = run;
+        }
+
+        this.setWeight = function(){
+            return this.weight;
+        }
+        this.say = function(){
+            document.write('Meo meo')
+        }
+        //khả năng bắt chuột
+        this.rat_mouse = function(rat){
+                rat = new Mouse();
+                document.write('chuột đã bị bắt');
+                //this.weight = 0;
+        }
+        //khả năng ăn thịt chuột
+        this.an_chuot = function(){
+            if(this.weight == 0)
+            {
+                document.write('<br/>');
+                document.write('Bắt đầu ăn thịt con chuột');
+            }
+        }
+    }
+
+    var mouse = new Mouse("Rat",20,40);
+    var cat = new Cat("cat",30,30);
+    var i =0,j = 0;
+    for(i =cat.run;i< mouse.run+2;i++) {
+        //cat.setRun();
+        if(i>mouse.run) {
+            mouse.say();
+            cat.rat_mouse(mouse);
+            cat.an_chuot();
+            var klmeo =cat.weight ;
+            for(j =mouse.weight; j>0;j--){
+                if(j <=mouse.weight && j>= (mouse.weight/2)){
+                    klmeo =cat.weight +mouse.weight - j;
+                    document.write('<br/>chuột vẫn sống'+'kl mèo='+klmeo+',kl chuot='+j);
+                }
+                if(j <mouse.weight/2){
+                    document.write('<br/> Chuột đã chết');
+                    break;
+                }
+            }
+            break;
+        }
+        else
+        {
+            document.write('Chưa bắt được chuột,tốc độ mèo ='+i+',tốc độ của chuột='+mouse.run+"<br/>");
+        }
+    }
+</script>
+</body>
+</html>
